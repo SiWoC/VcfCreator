@@ -14,7 +14,7 @@ Unterstützte Dateiformate:
 
 Um das Programm auszuführen, wie folgt vorgehen:
 - Entpacken Sie die Datei (dass haben Sie wahrscheinlich gerade getan um dies lesen zu konnen)
-- Führen Sie VcfCreator.bat aus. Das Programm benötigt Java.
+- Führen Sie VcfCreator.jar oder VcfCreator.bat aus. Das Programm benötigt Java.
   Wenn Java noch nicht installiert ist, können Sie es von http://www.java.com downloaden
 - Wählen Sie eine Eingabedatei.
 - Wählen Sie einen Ausgabeordner. Wenn dieser Ordner nicht existiert,

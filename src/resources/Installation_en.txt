@@ -14,7 +14,7 @@ Supported file formats:
 
 To run the program, proceed as follows:
 - Unzip the file (which you probably have just done to read this)
-- Run VcfCreator.bat. The program requires Java to run.
+- Run VcfCreator.jar (doubleclick and open with Java) or VcfCreator.bat. The program requires Java to run.
   If Java is not yet installed you can download it from http://www.java.com
 - Select an input file.
 - Select an output folder. If this folder does not exist it will be created.

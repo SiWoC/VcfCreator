@@ -14,8 +14,8 @@ Ondersteunde bestandsformaten:
 
 Om het programma te gebruiken gaat u als volgt te werk:
 - unzip het bestand (Dat heeft u waarschijnlijk net gedaan om dit te kunnen lezen)
-- Voer VcfCreator.bat uit. Hiervoor moet Java geinstalleed zijn, als dat nog niet het geval is
-  kunt u dit downloaden van http://www.java.com
+- "Run" VcfCreator.jar (dubbelklik en open het met java) of voer VcfCreator.bat uit. 
+  Hiervoor moet Java geinstalleed zijn, als dat nog niet het geval is kunt u dit downloaden van http://www.java.com
 - Selecteer een invoer bestand.
 - Selecteer een uitvoer map. Als deze map nog niet bestaat zal hij worden aangemaakt.
   In deze uitvoer map zal een submap destinations worden aangemaakt.
