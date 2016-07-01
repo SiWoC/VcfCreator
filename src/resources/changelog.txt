@@ -1,0 +1,4 @@
+Change log:
+1.2.1
+- strange characters at beginning of .itn files
+- removing / from name for correct saving of vcf-file

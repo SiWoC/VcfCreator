@@ -1,0 +1,34 @@
+=====================
+     Vcf Creator
+=====================
+
+Dieses Programm konvertiert Strecke-Dateien in verschiedenen Formaten zur Vcf Dateien,
+so dass die in eine Volkswagen RNS510 Navigationssystem gelesen werden können.
+
+Unterstützte Dateiformate:
+- rte OziExplorer Route File Version 1.0 (und nog ein Format dass die Dateiendung rte hatte.)
+- gpx GPS Exchange Format Version 1.0
+- itn TomTom Route itinerary Dateien
+- kml Google Earth, Google Maps Keyhole Markup Language Version 2.1
+- Trp TravelPilot? Data Version: 1.9.1.1
+
+Um das Programm auszuführen, wie folgt vorgehen:
+- Entpacken Sie die Datei (dass haben Sie wahrscheinlich gerade getan um dies lesen zu konnen)
+- Führen Sie VcfCreator.bat aus. Das Programm benötigt Java.
+  Wenn Java noch nicht installiert ist, können Sie es von http://www.java.com downloaden
+- Wählen Sie eine Eingabedatei.
+- Wählen Sie einen Ausgabeordner. Wenn dieser Ordner nicht existiert,
+  wird sie erstellt werden und in dieser Ordner wird einen Unterordner destinations erstellt.
+- Geben Sie eine Route-Präfix ein. Dadurch wird sichergestellt, dass Sie die verschiedenen
+  Routen auseinander halten können wenn diese in allen "lose" Routenpunkte aufgeteilt sind.
+- Wählen Sie konvertieren
+- Wenn die Datei konvertiert werden kann, wird gezeigt wie viel VCards erstellt worden sind
+  in der Ausgabe-Ordner / destinations.
+
+Die Ziele verwenden in Ihrem Navigationssystem.
+Volkswagen RNS510:
+- Kopieren Sie den Ordner "destinations" in einer SD-Karte.
+  Kopieren Sie den gesamten Ordner, nicht nur der Inhalt.
+- Start Nav
+- Wählen Sie RitModus
+- Wählen Sie Ziele aus der SD-Karte

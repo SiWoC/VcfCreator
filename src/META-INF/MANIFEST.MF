@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Name: siwoc/navigation/utils/VcfCreator
+Specification-Title: "Vcf Creator, Navigation/Routemaps Utility" 
+Specification-Version: "1.1"
+Specification-Vendor: "SiWoC".
+Implementation-Title: "nl.siwoc.navigation.utils:VcfCreator" 
+Implementation-Version: "001"
+Implementation-Vendor: "SiWoC"
+
