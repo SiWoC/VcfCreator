@@ -207,7 +207,7 @@
           <Image iconType="3" name="/resources/info.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="imgInfo"/>
-        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; VcfCreator 1.2.1&lt;br&gt; &#xa9; Niek Knijnenburg 2012&lt;br&gt; schnappiroc@gmail.com &lt;/html&gt;" noResource="true"/>
+        <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt; VcfCreator 1.3.1&lt;br&gt; &#xa9; Niek Knijnenburg 2012&lt;br&gt; schnappiroc@gmail.com &lt;/html&gt;" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btn_nl">

@@ -24,3 +24,4 @@ nbactions.xml
 doc
 
 testFiles
+/target/

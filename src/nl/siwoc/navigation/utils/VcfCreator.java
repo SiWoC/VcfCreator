@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.MessageFormat;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
@@ -107,15 +108,14 @@ public class VcfCreator {
     }
 
     public ArrayList<VCardImpl> tryParseRte(File inputFile) throws ParseException {
-        try {
-            _vCards.clear();
-            InputStream fis;
-            BufferedReader br;
+
+        try (InputStream fis = new FileInputStream(inputFile);
+        		BufferedReader br = new BufferedReader(new InputStreamReader(fis, "UTF-16"));) {
+
+        	_vCards.clear();
             String line;
             boolean firstLine = true;
 
-            fis = new FileInputStream(inputFile);
-            br = new BufferedReader(new InputStreamReader(fis));
             while ((line = br.readLine()) != null) {
                 if (firstLine) {
                     if (!line.matches("Ozi.*")) {
@@ -142,14 +142,13 @@ public class VcfCreator {
     }
 
     public ArrayList<VCardImpl> tryParseItn(File inputFile) throws ParseException {
-        try {
-            _vCards.clear();
-            InputStream fis;
-            BufferedReader br;
+
+        try (InputStream fis = new FileInputStream(inputFile);
+        		BufferedReader br = new BufferedReader(new InputStreamReader(fis, "UTF-16"));) {
+
+        	_vCards.clear();
             String line;
 
-            fis = new FileInputStream(inputFile);
-            br = new BufferedReader(new InputStreamReader(fis));
             int number = 1;
             while ((line = br.readLine()) != null) {
                 while (!firstCharIsNumber(line)) {
@@ -169,14 +168,13 @@ public class VcfCreator {
     }
 
     public ArrayList<VCardImpl> tryParseRte2(File inputFile) throws ParseException {
-        try {
-            _vCards.clear();
-            InputStream fis;
-            BufferedReader br;
+
+    	try (InputStream fis = new FileInputStream(inputFile);
+        		BufferedReader br = new BufferedReader(new InputStreamReader(fis, "UTF-16"));) {
+
+    		_vCards.clear();
             String line;
 
-            fis = new FileInputStream(inputFile);
-            br = new BufferedReader(new InputStreamReader(fis));
             int number = 1;
             while ((line = br.readLine()) != null) {
                 String[] entries = line.split("\\|");
@@ -193,35 +191,33 @@ public class VcfCreator {
     }
 
     public ArrayList<VCardImpl> tryParseTrp(File inputFile) throws ParseException {
-        try {
-            _vCards.clear();
-            InputStream fis;
-            BufferedReader br;
-            String line;
+        try (InputStream fis = new FileInputStream(inputFile);
+        		BufferedReader br = new BufferedReader(new InputStreamReader(fis, "UTF-16"));) {
+            
+        	_vCards.clear();
+        	String line;
             String[] entries;
             String name = null;
             Double longitude = null;
             Double latitude = null;
-
-            fis = new FileInputStream(inputFile);
-            br = new BufferedReader(new InputStreamReader(fis, "UTF-16"));
+            
             int number;
             while ((line = br.readLine()) != null) {
-                if (line.matches("Start Stop=.*")) {
+                if (line.startsWith("Start Stop=")) {
                     entries = line.split(" ");
-                    number = Integer.parseInt(entries[entries.length - 1]);
+                    number = Integer.parseInt(entries[entries.length - 1]) + 1;
                     String stopLine = br.readLine();
                     // read till the end of this stop
-                    while (stopLine != null && !stopLine.matches("End Sto.*")) {
-                        if (stopLine.matches("Longitude=.*")) {
+                    while (stopLine != null && !stopLine.startsWith("End Sto")) {
+                        if (stopLine.startsWith("Longitude=")) {
                             entries = stopLine.split("=");
                             longitude = Double.parseDouble(entries[entries.length - 1]) / 1000000;
                         }
-                        if (stopLine.matches("Latitude=.*")) {
+                        if (stopLine.startsWith("Latitude=")) {
                             entries = stopLine.split("=");
                             latitude = Double.parseDouble(entries[entries.length - 1]) / 1000000;
                         }
-                        if (stopLine.matches("City=.*")) {
+                        if (stopLine.startsWith("Address=")) {
                             entries = stopLine.split("=");
                             name = entries[entries.length - 1];
                         }
@@ -346,7 +342,7 @@ public class VcfCreator {
     }
 
     private void setVCardName(VCardImpl vCard, String name) {
-        name = name.replaceAll("/", "_");
+        name = normalize(name.replaceAll("/", "_"));
         vCard.setFormattedName(new FormattedNameType(name));
         vCard.setName(new NameType(name));
     }
@@ -358,4 +354,11 @@ public class VcfCreator {
         }
         return false;
     }
+
+	public static String normalize (String input) {
+		input = input.replaceAll("ß", "ss");
+		input = Normalizer.normalize(input, Normalizer.Form.NFD);
+		return input.replaceAll("[^\\x00-\\x7F]", "");		
+	}
+    
 }

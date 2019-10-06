@@ -123,7 +123,7 @@ public class MainWindow extends JFrame {
 
         imgInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/info.png"))); // NOI18N
         imgInfo.setText("imgInfo");
-        imgInfo.setToolTipText("<html> VcfCreator 1.2.1<br> © Niek Knijnenburg 2012<br> schnappiroc@gmail.com </html>"); // NOI18N
+        imgInfo.setToolTipText("<html>VcfCreator 1.3.1<br>\u00A9 Niek Knijnenburg 2012-2019<br>schnappiroc@gmail.com</html>"); // NOI18N
 
         btn_nl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/flag_nl.png"))); // NOI18N
         btn_nl.setToolTipText("nl");
@@ -245,11 +245,11 @@ public class MainWindow extends JFrame {
     private void btnBrowseInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseInputActionPerformed
         txtStatus.setText("");
         inputChooser = new JFileChooser();
+        inputChooser.addChoosableFileFilter(new FileNameExtensionFilter("CoPilot (*.trp)", "trp"));
         inputChooser.addChoosableFileFilter(new FileNameExtensionFilter("GPS Exchange Format (*.gpx)", "gpx"));
         inputChooser.addChoosableFileFilter(new FileNameExtensionFilter("OziExplorer Route File (*.rte)", "rte"));
         inputChooser.addChoosableFileFilter(new FileNameExtensionFilter("TomTom itinerary (*.itn)", "itn"));
         inputChooser.addChoosableFileFilter(new FileNameExtensionFilter("Google Earth, Google Maps Keyhole Markup Language (*.kml)", "kml"));
-        inputChooser.addChoosableFileFilter(new FileNameExtensionFilter("TravelPilot (*.trp)", "trp"));
         inputChooser.setAcceptAllFileFilterUsed(true);
         inputChooser.setCurrentDirectory(new File(txtInputFile.getText()));
         inputChooser.setDialogTitle(Localizer.getLocalizedText("DIALOG_TITLE_INPUT"));
